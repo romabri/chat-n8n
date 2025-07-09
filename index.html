@@ -1,83 +1,106 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chat con n8n</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: "Segoe UI", sans-serif;
+      background: #f0f2f5;
       margin: 0;
-      padding: 20px;
-      background-color: #f0f2f5;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     h2 {
-      text-align: center;
-      margin-bottom: 20px;
+      margin: 20px;
+      color: #1971c2;
     }
 
     #chat {
-      border: 1px solid #ccc;
+      width: 100%;
+      max-width: 600px;
+      background: white;
       border-radius: 10px;
       padding: 15px;
-      height: 400px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      height: 450px;
       overflow-y: auto;
-      background: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .mensaje {
       margin: 10px 0;
-      padding: 10px 14px;
-      border-radius: 10px;
-      max-width: 75%;
-      word-wrap: break-word;
+      padding: 12px 16px;
+      border-radius: 18px;
+      max-width: 80%;
       clear: both;
+      word-wrap: break-word;
+      line-height: 1.4;
     }
 
     .yo {
-      background: #d0ebff;
+      background: #1971c2;
+      color: white;
       float: right;
       text-align: right;
     }
 
     .n8n {
-      background: #d3f9d8;
+      background: #e3f9e5;
+      color: #2d572c;
       float: left;
       text-align: left;
     }
 
     #formulario {
-      margin-top: 15px;
+      width: 100%;
+      max-width: 600px;
+      margin-top: 10px;
       display: flex;
+      padding: 10px;
+      background: #fff;
+      border-top: 1px solid #ddd;
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.04);
       gap: 10px;
     }
 
     #texto {
       flex-grow: 1;
-      padding: 10px;
-      border-radius: 6px;
+      padding: 12px;
+      font-size: 16px;
       border: 1px solid #ccc;
+      border-radius: 25px;
+      outline: none;
     }
 
     button {
-      padding: 10px 16px;
+      padding: 12px 20px;
+      font-size: 16px;
       background-color: #1971c2;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 25px;
       cursor: pointer;
+      transition: background-color 0.2s ease;
     }
 
     button:hover {
-      background-color: #1864ab;
+      background-color: #155ba4;
+    }
+
+    @media (max-width: 600px) {
+      #chat, #formulario {
+        border-radius: 0;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h2>Chat con n8n (GET)</h2>
+  <h2>💬 Chat con n8n</h2>
 
   <div id="chat">
     <div class="mensaje n8n">👋 Hola, soy n8n. Escríbeme algo para empezar.</div>
@@ -116,7 +139,9 @@
       try {
         const res = await fetch(url, {
           method: "GET",
-          headers: { "Cache-Control": "no-cache" },
+          headers: {
+            "Cache-Control": "no-cache"
+          },
           cache: "no-store"
         });
 
