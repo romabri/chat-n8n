@@ -134,7 +134,7 @@
       input.value = '';
       input.focus();
 
-      const url = `https://romabri.app.n8n.cloud/webhook/embeddings?texto=${encodeURIComponent(texto)}&ts=${Date.now()}`;
+      const url = `https://romabri.app.n8n.cloud/webhook/github?texto=${encodeURIComponent(texto)}&ts=${Date.now()}`;
 
       try {
         const res = await fetch(url, {
